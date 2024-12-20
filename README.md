@@ -1,2 +1,3 @@
 # Kurogram
-Une copie d'instagram
+
+Une copie d'instagram à ma sauce.
