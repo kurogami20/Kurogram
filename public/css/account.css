@@ -1,0 +1,41 @@
+.account_inteface {
+}
+.account_header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+.id_container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.user_pfp {
+  border: solid 0.4rem rgb(204, 204, 204);
+  border-radius: 50%;
+  width: 10rem;
+}
+.user_name {
+  font-size: 2rem;
+  color: rgb(204, 204, 204);
+}
+.user_info {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+.user_info_item {
+  color: rgb(204, 204, 204);
+  font-weight: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info_publi_numbers {
+  font-size: 2rem;
+}
+.user_bio {
+  color: rgb(204, 204, 204);
+}
+.user_publi {
+}

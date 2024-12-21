@@ -45,6 +45,16 @@ const controllersList = {
     ); }
     
     
+  },
+  displayAccount(req,res){
+   const accountName= req.params.accountName
+   const user = userInfo.find(user=>user.name===accountName)
+   console.log(user)
+res.render("account",{
+     user,
+    inAccount:"no photo",
+     
+    })
   }
 };
 

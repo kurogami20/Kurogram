@@ -15,11 +15,14 @@
     <link rel="stylesheet" href="../../css/style.css" />
     <% if (locals.userInfo) { %>
     <link rel="stylesheet" href="../../css/login.css" />
-    <% } %>
+    <% } else if (locals.user){%>
+    <link rel="stylesheet" href="../../css/account.css" />
+    <%}%>
   </head>
   <body>
-    <header>
+    <header class="index_header">
       <h1>Kurogram</h1>
+
       <% if (locals.info) { %>
 
       <div class="user">
@@ -34,7 +37,7 @@
           ><strong class="user_connect"><%= info.name %></strong></a
         >
       </div>
-      <% } else { %>
+      <% } else if (locals.inAccount) { %> <% }else { %>
 
       <div class="user">
         <div class="circle_user"><i class="fa-solid fa-user"></i></div>

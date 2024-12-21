@@ -1,5 +1,38 @@
 <%- include('./partials/header') %>
 <main>
-  <div class="contain"></div>
+  <div class="contain">
+    <article class="account_inteface">
+      <header class="account_header">
+        <div class="id_container">
+          <img class="user_pfp" src="<%= user.photo %>" alt="" />
+          <h2 class="user_name"><%=user.name%></h2>
+        </div>
+        <ul class="user_info">
+          <li class="user_info_item user_info_publi">
+            <p class="info_publi_numbers"><%= user.publication %></p>
+            Publications
+          </li>
+          <li class="user_info_item user_info_follower">
+            <p class="info_publi_numbers"><%= user.followers %></p>
+            Followers
+          </li>
+          <li class="user_info_item user_info_following">
+            <p class="info_publi_numbers"><%= user.followings %></p>
+            Followings
+          </li>
+        </ul>
+      </header>
+      <div class="user_bio">
+        <em class="user-other_name"></em>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+          accusamus perspiciatis atque mollitia optio nam quas inventore, sunt
+          omnis deserunt ut tempore voluptatibus aliquid, eum, corrupti alias
+          explicabo ipsa cumque.
+        </p>
+      </div>
+      <div class="user_publi"></div>
+    </article>
+  </div>
 </main>
 <%- include('./partials/footer') %>
