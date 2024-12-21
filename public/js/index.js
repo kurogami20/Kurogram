@@ -3,8 +3,13 @@
 const post = document.querySelectorAll(".post");
 
 const interactionSelector = post.forEach((post) => {
-  // *param
-  let likes = 3000;
+  // *gestion du nb de like
+  let likes = Math.round(Math.random() * 100000);
+  const likeNumbers = post.querySelector(".post_interaction_like_number");
+  likeNumbers.textContent = `${likes} likes`;
+
+  // *param de l'event
+
   let userLike = 0;
   let userBookmark = 0;
 
@@ -12,15 +17,7 @@ const interactionSelector = post.forEach((post) => {
   const like = post.querySelector(".fa-heart");
   const bookMark = post.querySelector(".fa-bookmark");
   const postSave = post.querySelector(".enr_ok");
-
-  const likeNumbers = post.querySelector(".post_interaction_like_number");
-
-  // *fonction event
-  function clickInteraction() {
-    like.addEventListener("click", clickedLike);
-    bookMark.addEventListener("click", clickedBookMark);
-  }
-  clickInteraction();
+  const post_img = post.querySelector(".post_img");
 
   // *les différentes fonction de l'event
   function clickedLike(event) {
@@ -65,4 +62,11 @@ const interactionSelector = post.forEach((post) => {
       postSave.classList.remove("enr_ok_display_block");
     }
   }
+  function clickInteraction() {
+    like.addEventListener("click", clickedLike);
+    bookMark.addEventListener("click", clickedBookMark);
+    post_img.addEventListener("dblclick", clickedLike);
+  }
+  // *la fonction des event
+  clickInteraction();
 });

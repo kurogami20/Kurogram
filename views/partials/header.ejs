@@ -13,19 +13,39 @@
     />
     <link rel="stylesheet" href="../../css/reset.css" />
     <link rel="stylesheet" href="../../css/style.css" />
+    <% if (locals.userInfo) { %>
+    <link rel="stylesheet" href="../../css/login.css" />
+    <% } %>
   </head>
   <body>
     <header>
       <h1>Kurogram</h1>
+      <% if (locals.info) { %>
+
+      <div class="user">
+        <div class="circle_user">
+          <img
+            style="border-radius: 50%; object-fit: cover"
+            src="<%=  userPhoto %>"
+            alt=""
+          />
+        </div>
+        <a href="/login/account/<%= info.name %>"
+          ><strong class="user_connect"><%= info.name %></strong></a
+        >
+      </div>
+      <% } else { %>
+
       <div class="user">
         <div class="circle_user"><i class="fa-solid fa-user"></i></div>
-        <a href=""><strong class="user_connect">Se connecter</strong></a>
+        <a href="/login"><strong class="user_connect">Se connecter</strong></a>
       </div>
+      <% } %>
     </header>
     <nav class="main_nav">
       <ul class="menu_list">
         <li class="menu_item">
-          <a class="menu_link" href="#"><i class="fa-solid fa-house"></i></a>
+          <a class="menu_link" href="/"><i class="fa-solid fa-house"></i></a>
         </li>
         <li class="menu_item">
           <a class="menu_link" href="#"

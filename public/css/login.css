@@ -1,0 +1,29 @@
+h2 {
+  color: rgb(204, 204, 204);
+  font-size: 2rem;
+}
+.form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border: solid 0.5px #3d3d3d;
+  padding: 1rem;
+  height: 50%;
+  justify-content: space-around;
+}
+fieldset {
+  border: none;
+}
+label {
+  color: rgb(204, 204, 204);
+  font-weight: 900;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.not_user {
+  color: rgb(204, 204, 204);
+}
+.not_user > a {
+  color: rgb(204, 204, 204);
+}

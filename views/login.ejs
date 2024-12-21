@@ -1,0 +1,40 @@
+<%- include('./partials/header') %>
+<main>
+  <div class="contain">
+    <h2>Connectez vous</h2>
+    <% if (locals.errorLog) { %>
+    <h3 style="color: red"><%= errorLog %></h3>
+    <% } %>
+
+    <form class="form-login" method="post">
+      <fieldset>
+        <label>
+          <span class="text_label">Nom d'utilisateur</span>
+          <input name="name" placeholder="jambon_du_75" />
+        </label>
+      </fieldset>
+      <fieldset>
+        <label>
+          <span class="text_label">Mot de passe</span>
+          <input name="password" type="password" />
+        </label>
+      </fieldset>
+      <!-- <fieldset>
+        <label>
+          Url avatar
+          <input
+            name="avatar"
+            placeholder="John"
+            type="url"
+          />
+        </label>
+      </fieldset> -->
+
+      <button type="submit">Se connecter</button>
+    </form>
+    <p class="not_user">
+      Vous navez pas de compte ? créez en un <a href="#">ici</a>
+    </p>
+  </div>
+</main>
+<%- include('./partials/footer') %>

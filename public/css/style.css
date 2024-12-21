@@ -90,7 +90,7 @@ main {
   gap: 3rem;
   padding: 2rem 15%;
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   scroll-behavior: smooth;
   scrollbar-width: thin;
@@ -168,9 +168,11 @@ em {
 }
 .enr_ok {
   position: absolute;
-  right: -7.5%;
-  bottom: 150%;
   background-color: #141414;
+  border-radius: 10px;
+  padding: 5px;
+  right: 10%;
+  bottom: -25%;
 }
 .enr_ok_display_none {
   display: none;
