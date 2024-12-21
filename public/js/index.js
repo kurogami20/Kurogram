@@ -1,17 +1,19 @@
-let likes = 3000;
-let userLike = 0;
-let userBookmark = 0;
+// *event pour les likes et les bookmark
+
 const post = document.querySelectorAll(".post");
 
 const interactionSelector = post.forEach((post) => {
+  // *param
+  let likes = 3000;
+  let userLike = 0;
+  let userBookmark = 0;
+
   // *éléments de l'évent
   const like = post.querySelector(".fa-heart");
   const bookMark = post.querySelector(".fa-bookmark");
+  const postSave = post.querySelector(".enr_ok");
 
   const likeNumbers = post.querySelector(".post_interaction_like_number");
-
-  // *création de l'élément de validation du bookmark
-  const enrOk = document.querySelector(".enr_ok");
 
   // *fonction event
   function clickInteraction() {
@@ -33,7 +35,7 @@ const interactionSelector = post.forEach((post) => {
       like.style.cursor = "pointer";
     } else {
       likes -= 1;
-      userLike += 1;
+      userLike -= 1;
       like.classList.add("fa-regular");
       like.classList.remove("fa-solid");
       like.style.color = "rgb(204, 204, 204)";
@@ -47,16 +49,20 @@ const interactionSelector = post.forEach((post) => {
       bookMark.classList.remove("fa-regular");
       bookMark.classList.add("fa-solid");
       bookMark.style.color = "rgb(204, 204, 204)";
-      enrOk.style.display = "block";
+      postSave.classList.add("enr_ok_display_block");
+      postSave.classList.remove("enr_ok_display_none");
       setTimeout(() => {
-        enrOk.style.display = "none";
+        postSave.classList.remove("enr_ok_display_block");
+        postSave.classList.add("enr_ok_display_none");
       }, 900);
       bookMark.style.cursor = "pointer";
     } else {
-      userBookmark += 1;
+      userBookmark -= 1;
       bookMark.classList.remove("fa-solid");
       bookMark.classList.add("fa-regular");
       bookMark.style.color = "rgb(204, 204, 204)";
+      postSave.classList.add("enr_ok_display_none");
+      postSave.classList.remove("enr_ok_display_block");
     }
   }
 });
