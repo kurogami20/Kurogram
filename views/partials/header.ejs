@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../../css/login.css" />
     <% } else if (locals.user){%>
     <link rel="stylesheet" href="../../css/account.css" />
+    <%}else if (locals.create){%>
+    <link rel="stylesheet" href="../../css/create_account.css" />
     <%}%>
   </head>
   <body>
@@ -27,11 +29,18 @@
 
       <div class="user">
         <div class="circle_user">
+          <% if (userPhoto!=="") { %>
           <img
             style="border-radius: 50%; object-fit: cover"
             src="<%=  userPhoto %>"
             alt=""
           />
+          <% } else { %>
+
+          <div class="user">
+            <div class="circle_user"><i class="fa-solid fa-user"></i></div>
+          </div>
+          <%}%>
         </div>
         <a href="/login/account/<%= info.name %>"
           ><strong class="user_connect"><%= info.name %></strong></a

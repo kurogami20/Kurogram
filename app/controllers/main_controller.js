@@ -55,7 +55,43 @@ res.render("account",{
     inAccount:"no photo",
      
     })
+  },
+
+displayCreateAccount(req,res){
+  res.render("create_account",
+   { create:"css"}
+  )
+},
+
+displayCreateAccountverify(req,res){
+const info = req.body
+    console.log(info)
+    if (info.name===''||info.password===''){
+
+      
+     res.render("create_account",{
+      userInfo,
+      create:"css",
+      errorLog:"Veuillez bien renseigner tous les champs obligatoires."
+    })}
+   
+    else{
+
+userInfo.push(
+  {
+    "name": info.name,
+    "password":info.password,
+    "photo": info.photo,
+    "publication": 0,
+    "followers": 0,
+    "followings": 0
   }
+)
+console.log(userInfo)
+      res.redirect("/login")
+    }
+    
+}
 };
 
 export default controllersList;

@@ -21,6 +21,12 @@ label {
   justify-content: space-between;
   gap: 0.5rem;
 }
+
+.sub_button {
+  width: 50%;
+  font-weight: 900;
+  align-self: center;
+}
 .not_user {
   color: rgb(204, 204, 204);
 }

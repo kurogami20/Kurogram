@@ -10,4 +10,12 @@ router.post("/login", mainController.displayHomeConnected);
 
 // *compte
 router.get("/login/account/:accountName", mainController.displayAccount);
+
+// *creer son compte
+router.get("/login/account_creation", mainController.displayCreateAccount);
+router.post(
+  "/login/account_creation",
+  mainController.displayCreateAccountverify
+);
+
 export default router;

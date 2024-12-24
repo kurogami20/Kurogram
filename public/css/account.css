@@ -14,6 +14,16 @@
   border: solid 0.4rem rgb(204, 204, 204);
   border-radius: 50%;
   width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+}
+
+.circle_user {
+  width: 10rem;
+  height: 10rem;
+}
+.fa-user {
+  font-size: 4.5rem;
 }
 .user_name {
   font-size: 2rem;

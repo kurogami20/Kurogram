@@ -4,7 +4,9 @@
     <h2>Connectez vous</h2>
     <% if (locals.errorLog) { %>
     <h3 style="color: red"><%= errorLog %></h3>
-    <% } %>
+    <% } else if (locals.successAccount) {%>
+    <h3 style="color: rgb(204, 204, 204)"><%= successAccount %></h3>
+    <%}%>
 
     <form class="form-login" method="post">
       <fieldset>
@@ -19,21 +21,11 @@
           <input name="password" type="password" />
         </label>
       </fieldset>
-      <!-- <fieldset>
-        <label>
-          Url avatar
-          <input
-            name="avatar"
-            placeholder="John"
-            type="url"
-          />
-        </label>
-      </fieldset> -->
-
-      <button type="submit">Se connecter</button>
+      <button class="sub_button" type="submit">Se connecter</button>
     </form>
     <p class="not_user">
-      Vous navez pas de compte ? créez en un <a href="#">ici</a>
+      Vous navez pas de compte ? créez en un
+      <a href="/login/account_creation">ici</a>
     </p>
   </div>
 </main>
