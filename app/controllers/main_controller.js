@@ -18,41 +18,50 @@ const controllersList = {
 
 
   displayHomeConnected(req,res){
-    console.log(req.body)
+    
     const info = req.body
 // userInfoTemp.push(info)
 // console.log(userInfoTemp)
-    const user = userInfoConnected.find((user)=> user.name===info.name);
+    // const user = userInfoConnected.find((user)=> user.name===info.name || user.password===info.password);
 
 
     // console.log(userPhoto.photo)
     // console.log(userInfo)
     console.log(info)
     console.log(info.password)
+    // console.log(user.name)
+
+    
     if (info.name===''||info.password===''||info===""){
      res.render("login",{
       userInfo,
       errorLog:"Veuillez bien renseigner tous les champs."
     })}
-    else if(info.name!==user.name||info.password!==user.password){
+    else if(userInfoConnected.find((user)=> user.name!==info.name&&user.password===info.password || user.name===info.name&& user.password!==info.password)){
       res.render("login",{
       userInfo,
       errorLog:"Mot de passe ou nom d'utilisateur incorrect "
     })
     }
-    else if (info.name===user.name||info.password===user.password){
+    else if(userInfoConnected.find((user)=> user.name!==info.name && user.password!==info.password)){
+      res.render("login",{
+      userInfo,
+      errorLog:"Compte inexistant "
+    })
+    }
+    else if (info.name===user.name&&info.password===user.password){
     res.render("index",{
      postInfo,
      info,
      userPhoto : user.photo
     })
     }
-    else {
-     res.render("login",{
-      userInfo,
-      errorLog:"Compte inexistant "
-    })
-     }
+    // else {
+    //  res.render("login",{
+    //   userInfo,
+    //   errorLog:"Compte inexistant "
+    // })
+    //  }
   },
 //   displayIndexConnected(req,res){
 //     const info = userInfoTemp
