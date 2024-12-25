@@ -15,25 +15,16 @@
         </div>
         <ul class="user_info">
           <li class="user_info_item user_info_publi">
-            <% if (user.publication!==0) { %>
             <p class="info_publi_numbers"><%= user.publication %></p>
-            Publications <% } %>
-            <p class="info_publi_numbers">0</p>
-            Publication
+            Publications
           </li>
           <li class="user_info_item user_info_follower">
-            <% if (user.followers!==0) { %>
             <p class="info_publi_numbers"><%= user.followers %></p>
-            Followers <% } %>
-            <p class="info_publi_numbers">0</p>
-            Follower
+            Followers
           </li>
           <li class="user_info_item user_info_following">
-            <% if (user.followings!==0) { %>
             <p class="info_publi_numbers"><%= user.followings %></p>
-            Followings <% } %>
-            <p class="info_publi_numbers">0</p>
-            Following
+            Followings
           </li>
         </ul>
       </header>
