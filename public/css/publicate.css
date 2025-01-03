@@ -1,0 +1,44 @@
+h2 {
+  color: rgb(204, 204, 204);
+  font-size: 2rem;
+}
+.form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border: solid 0.5px #3d3d3d;
+  padding: 1rem;
+  height: 50%;
+  justify-content: space-around;
+  width: 100%;
+}
+fieldset {
+  border: none;
+}
+label {
+  color: rgb(204, 204, 204);
+  font-weight: 900;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+input {
+  width: 100%;
+}
+textarea {
+  width: 100%;
+}
+.label_import {
+  flex-direction: column;
+}
+.sub_button {
+  width: 10%;
+  font-weight: 900;
+  align-self: center;
+}
+.not_user {
+  color: rgb(204, 204, 204);
+}
+.not_user > a {
+  color: rgb(204, 204, 204);
+}

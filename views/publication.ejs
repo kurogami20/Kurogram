@@ -1,0 +1,27 @@
+<%- include('./partials/header') %>
+<main>
+  <div class="contain">
+    <h2>Publiez votre univers</h2>
+    <% if (locals.errorLog) { %>
+    <h3 style="color: red"><%= errorLog %></h3>
+    <% } %>
+    <form class="form-login" method="post">
+      <fieldset>
+        <label>
+          <span class="text_label">image ou vidéo*</span>
+          <input name="post" placeholder="https://image.com" />
+        </label>
+      </fieldset>
+      <fieldset>
+        <label>
+          <span class="text_label">Description</span>
+          <textarea name="description" rows="5" id="description"></textarea>
+        </label>
+      </fieldset>
+
+      <button class="sub_button" type="submit">Publier</button>
+    </form>
+    <p class="not_user">*Champs obligatoires</p>
+  </div>
+</main>
+<%- include('./partials/footer') %>

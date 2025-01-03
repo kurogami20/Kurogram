@@ -1,5 +1,6 @@
 import express from "express";
 import mainController from "./controllers/main_controller.js";
+import error404 from "./middleware/404.js";
 
 const router = express.Router();
 // *accueil
@@ -20,4 +21,10 @@ router.post(
   mainController.displayCreateAccountverify
 );
 
+// *publication
+router.get("/connected/publicate/:userName", mainController.displayPublication);
+router.post("/connected/publicate/:userName", mainController.handlePublication);
+
+// *404
+router.use(error404.display404);
 export default router;

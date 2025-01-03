@@ -19,13 +19,15 @@
     <link rel="stylesheet" href="../../css/account.css" />
     <%}else if (locals.create){%>
     <link rel="stylesheet" href="../../css/create_account.css" />
-    <%}%>
+    <%}else if (locals.stylePublicate){%>
+    <link rel="stylesheet" href="../../css/publicate.css" />
+    <% } %>
   </head>
   <body>
     <header class="index_header">
       <h1>Kurogram</h1>
 
-      <% if (locals.info) { %>
+      <% if (locals.info||locals.stylePublicate) { %>
 
       <div class="user">
         <div class="circle_user">
@@ -72,13 +74,15 @@
       <ul class="menu_list">
         <li class="menu_item">
           <% if (locals.connected||locals.info) { %>
-          <a class="menu_link" href="/connected/<%= userName %>"
+          <a class="menu_link" href="/connected/<%= info.name %>"
             ><i class="fa-solid fa-house"></i
           ></a>
           <% } else if (locals.user){ %>
           <a class="menu_link" href="/connected/<%= user.name %>"
             ><i class="fa-solid fa-house"></i
           ></a>
+          <% } else {%>
+          <a class="menu_link" href="/"><i class="fa-solid fa-house"></i></a>
           <% } %>
         </li>
         <li class="menu_item">
@@ -96,12 +100,41 @@
             ><i class="fa-solid fa-clapperboard"></i
           ></a>
         </li>
+        <% if (locals.connected||locals.info) { %>
         <li class="menu_item">
-          <a class="menu_link" href="#"><i class="fa-regular fa-heart"></i></a>
+          <a class="menu_link" href="/connected/notification/<%= info.name %>"
+            ><i class="fa-regular fa-heart"></i
+          ></a>
         </li>
         <li class="menu_item">
-          <a class="menu_link" href="#"><i class="fa-solid fa-plus"></i></a>
+          <a class="menu_link" href="/connected/publicate/<%= info.name %>"
+            ><i class="fa-solid fa-plus"></i
+          ></a>
         </li>
+        <% } else if (locals.user){%>
+        <li class="menu_item">
+          <a class="menu_link" href="/connected/notification/<%= user.name %>"
+            ><i class="fa-regular fa-heart"></i
+          ></a>
+        </li>
+        <li class="menu_item">
+          <a class="menu_link" href="/connected/publicate/<%= user.name %>"
+            ><i class="fa-solid fa-plus"></i
+          ></a>
+        </li>
+        <% } else{%>
+
+        <li class="menu_item">
+          <a class="menu_link" href="/login"
+            ><i class="fa-regular fa-heart"></i
+          ></a>
+        </li>
+        <li class="menu_item">
+          <a class="menu_link" href="/login"
+            ><i class="fa-solid fa-plus"></i
+          ></a>
+        </li>
+        <% } %>
       </ul>
     </nav>
   </body>

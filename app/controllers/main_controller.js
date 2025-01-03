@@ -1,7 +1,8 @@
 import postInfo from "../../data/posts.json" with { type: "json" };
 import userInfo from "../../data/user_info.json" with { type: "json" };
 import userInfoConnected from "../../data/user_info.json" with { type: "json" };
-import userInfoTemp from "../../data/temporary.json" with { type: "json" };
+import posts from "../../data/posts.json" with { type: "json" };
+
 
 const controllersList = {
   // *affichage de la page d'accueil
@@ -85,7 +86,7 @@ console.log(userName)
     info
   })
 },
-
+// *page du compte de l'utilisateur
   displayAccount(req,res){
    const accountName= req.params.accountName
    const user = userInfo.find(user=>user.name===accountName)
@@ -96,13 +97,13 @@ res.render("account",{
      
     })
   },
-
+// *page de création de compte
 displayCreateAccount(req,res){
   res.render("create_account",
    { create:"css"}
   )
 },
-
+// *vérifivation des information du formulaire de création de compte
 displayCreateAccountverify(req,res){
 const info = req.body
     console.log(info)
@@ -116,6 +117,8 @@ const info = req.body
     })}
    
     else{
+
+  
 
 userInfo.push(
   {
@@ -132,8 +135,46 @@ console.log(userInfo)
     }
     
 },
+// *publication d'image
+displayPublication(req,res){
+   const userName= req.params.userName
+  const info = userInfo.find((user)=>user.name===userName)
+  res.render("publication",{
+    stylePublicate:"css",
+    info
+  })
+},
+handlePublication(req,res){
+  const userName= req.params.userName
+  const info = userInfo.find((user)=>user.name===userName)
+const publiPhoto = req.body
+
+if (publiPhoto.post!== ""){
+info.publication=+1
+posts.unshift({
+"user_photo":info.photo,
+"user_name":info.name,
+"user_post":publiPhoto.post,
+"user_description":publiPhoto.description
+}
 
 
+)
+  // res.render("index_connected",{
+  //   postInfo, connected:"link",
+  //   userName:userName,
+  //   info
+  // })
+res.redirect(`/connected/${info.name}`)  
+}
+  else{
+    res.render("publication",{
+    stylePublicate:"css",
+    info,
+    errorLog:"Veuillez mettre une image."
+  })
+  }
+}
 };
 
 export default controllersList;
