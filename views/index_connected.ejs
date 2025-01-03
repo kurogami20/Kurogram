@@ -1,0 +1,46 @@
+<%- include('./partials/header') %>
+<main>
+  <div class="contain">
+    <% postInfo.forEach(post => { %>
+    <article class="post">
+      <div class="post_user">
+        <a class="user_link" href="#">
+          <img src="<%= post.user_photo %>" alt="" class="post_user_img" /><em
+            class="post_user_name"
+            ><%= post.user_name %></em
+          >
+        </a>
+      </div>
+      <div class="post_img">
+        <img src="<%= post.user_post %>" alt="" class="post_img_img" />
+      </div>
+      <div class="post_interaction">
+        <ul class="post_inraction_list">
+          <li class="intraction_item">
+            <i class="fa-regular fa-heart"></i>
+          </li>
+          <li class="intraction_item"><i class="fa-regular fa-comment"></i></li>
+          <li class="intraction_item">
+            <i class="fa-regular fa-paper-plane"></i>
+          </li>
+          <li class="enr_ok enr_ok_display_none">
+            <p class="text_enr_ok">Post enregistré !</p>
+          </li>
+          <li class="intraction_item">
+            <i class="fa-regular fa-bookmark"></i>
+          </li>
+        </ul>
+        <p class="post_interaction_like_number"></p>
+      </div>
+      <div class="post_description">
+        <p class="post_description_text"><%= post.user_description %></p>
+      </div>
+      <div class="post_comment_add">
+        <a href="" class="post_comment_add--add"></a>
+      </div>
+    </article>
+
+    <% }) %>
+  </div>
+</main>
+<%- include('./partials/footer') %>

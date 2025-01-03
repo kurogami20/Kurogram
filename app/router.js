@@ -7,9 +7,9 @@ router.get("/", mainController.displayHome);
 
 // *login
 router.get("/login", mainController.displaylogin);
-router.post("/login", mainController.displayHomeConnected);
+router.post("/login", mainController.checkLogin);
 
-// router.get("/connected", mainController.displayIndexConnected);
+router.get("/connected/:userName", mainController.displayHomeConnected);
 // *compte
 router.get("/login/account/:accountName", mainController.displayAccount);
 

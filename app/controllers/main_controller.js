@@ -4,76 +4,88 @@ import userInfoConnected from "../../data/user_info.json" with { type: "json" };
 import userInfoTemp from "../../data/temporary.json" with { type: "json" };
 
 const controllersList = {
+  // *affichage de la page d'accueil
   displayHome(req, res) {
     res.render("index",{
       postInfo
     });
 
   },
+  // *affichage de la page de login
   displaylogin(req,res){
     res.render("login",{
       userInfo
     })
   },
 
-
-  displayHomeConnected(req,res){
+// *vérifivation des information du formulaire de login
+  checkLogin(req,res,next){
     
-    const info = req.body
-// userInfoTemp.push(info)
-// console.log(userInfoTemp)
-    // const user = userInfoConnected.find((user)=> user.name===info.name || user.password===info.password);
+    function log (){
+      const info = req.body;
+      
 
+      // *on vérifie si l'utilisateur a bien rempli tous les champs
 
-    // console.log(userPhoto.photo)
-    // console.log(userInfo)
-    console.log(info)
-    console.log(info.password)
-    // console.log(user.name)
-
-    
     if (info.name===''||info.password===''||info===""){
      res.render("login",{
       userInfo,
       errorLog:"Veuillez bien renseigner tous les champs."
-    })}
+      
+    })
+  return}
+
+  // *on vérifie si l'utilisateur a bien remplis les bonnes informations
+
     else if(userInfoConnected.find((user)=> user.name!==info.name&&user.password===info.password || user.name===info.name&& user.password!==info.password)){
       res.render("login",{
       userInfo,
       errorLog:"Mot de passe ou nom d'utilisateur incorrect "
     })
-    }
-    else if(userInfoConnected.find((user)=> user.name!==info.name && user.password!==info.password)){
-      res.render("login",{
+   return}
+
+   // *on envoie l'utilisateur sur la page d'accueil si toutes les informations sont justes
+
+    else if(userInfoConnected.find((user)=> user.name.includes(info.name) && user.password.includes(info.password))){
+        const user = userInfoConnected.find((user)=> user.name===info.name || user.password===info.password);
+
+// console.log(userInfoTemp)
+    // res.render("index_connected",{
+    //  postInfo,
+    //  info,
+    //  userPhoto : user.photo
+    // })
+    // res.redirect("/connected")
+     
+   res.redirect(`/connected/${user.name}`)}
+
+  //* si aucune des situations ci-dessus ne fonctionnent on renvoit ce message 
+
+    else {
+         res.render("login",{
       userInfo,
       errorLog:"Compte inexistant "
     })
-    }
-    else if (info.name===user.name&&info.password===user.password){
-    res.render("index",{
-     postInfo,
-     info,
-     userPhoto : user.photo
-    })
-    }
-    // else {
-    //  res.render("login",{
-    //   userInfo,
-    //   errorLog:"Compte inexistant "
-    // })
-    //  }
+   return}}
+    log()
+    
   },
-//   displayIndexConnected(req,res){
-//     const info = userInfoTemp
-//      console.log(info)
-//      const userPhoto = userInfoConnected.find((user)=> user.name===info.name);
-//    res.render("index",{
-//      postInfo,
-//      info,
-//      userPhoto : userPhoto.photo
-//     }
-//     ); 
-// },
+
+  // *page d'accueil quand l'utilisateur est connecté
+displayHomeConnected(req,res){
+const userName = req.params.userName
+const info = userInfo.find((user)=>user.name===userName)
+console.log(info)
+console.log(userName)
+
+  res.render("index_connected",{
+    postInfo,
+    connected:"link",
+    userName:userName,
+    info
+  })
+},
+
   displayAccount(req,res){
    const accountName= req.params.accountName
    const user = userInfo.find(user=>user.name===accountName)
