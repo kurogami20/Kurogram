@@ -1,7 +1,7 @@
 import postInfo from "../../data/posts.json" with { type: "json" };
 import userInfo from "../../data/user_info.json" with { type: "json" };
 import userInfoConnected from "../../data/user_info.json" with { type: "json" };
-
+import fs from "node:fs"
 
 const controllerLogList = {
 
@@ -111,9 +111,9 @@ const info = req.body
    
     else{
 
-  
+// * on récupère les donnée fournie dans un objet
+const newUser = 
 
-userInfo.push(
   {
     "name": info.name,
     "password":info.password,
@@ -122,9 +122,26 @@ userInfo.push(
     "followers": 0,
     "followings": 0
   }
-)
-console.log(userInfo)
-      res.redirect("/login")
+// *on récupère le chemin vers le fichier des données utilisateurs
+const filePath ="/var/www/html/sigurd/Kurogram/data/user_info.json"
+
+// *on récupère le fichier de donné es
+const userData =fs.readFileSync(filePath)
+// **on transforme le fichier de donées en tableau
+const  userData2 = JSON.parse(userData)
+// *on ajoute les données du nouvel utilisateur (au début)
+userData2.unshift(newUser)
+// *on transforme le tableau en JSON string
+const newUserJsonData = JSON.stringify(userData2, null, 2)
+// *on ajoute JSON string dans le fichier de donnée utilisateur
+try {
+  fs.writeFileSync(filePath, newUserJsonData);
+  console.log('JSON data saved to file successfully.');
+} catch (error) {
+  console.error('Error writing JSON data to file:', error);
+}
+
+res.redirect("/login")
     }
     
 },
