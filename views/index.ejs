@@ -5,10 +5,12 @@
     <article class="post">
       <div class="post_user">
         <a class="user_link" href="#">
-          <img src="<%= post.user_photo %>" alt="" class="post_user_img" /><em
-            class="post_user_name"
-            ><%= post.user_name %></em
-          >
+          <% if (post.user_photo!=="") { %>
+          <img src="<%= post.user_photo %>" alt="" class="post_user_img" />
+          <% } else{%>
+          <div class="circle_user"><i class="fa-solid fa-user"></i></div>
+          <% } %>
+          <em class="post_user_name"><%= post.user_name %></em>
         </a>
       </div>
       <div class="post_img">

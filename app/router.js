@@ -1,5 +1,7 @@
 import express from "express";
 import mainController from "./controllers/main_controller.js";
+import loginController from "./controllers/login_controller.js";
+import postController from "./controllers/post_controller.js";
 import error404 from "./middleware/404.js";
 
 const router = express.Router();
@@ -7,23 +9,23 @@ const router = express.Router();
 router.get("/", mainController.displayHome);
 
 // *login
-router.get("/login", mainController.displaylogin);
-router.post("/login", mainController.checkLogin);
+router.get("/login", loginController.displaylogin);
+router.post("/login", loginController.checkLogin);
 
-router.get("/connected/:userName", mainController.displayHomeConnected);
+router.get("/connected/:userName", loginController.displayHomeConnected);
 // *compte
-router.get("/login/account/:accountName", mainController.displayAccount);
+router.get("/login/account/:accountName", loginController.displayAccount);
 
 // *creer son compte
-router.get("/login/account_creation", mainController.displayCreateAccount);
+router.get("/login/account_creation", loginController.displayCreateAccount);
 router.post(
   "/login/account_creation",
-  mainController.displayCreateAccountverify
+  loginController.displayCreateAccountverify
 );
 
 // *publication
-router.get("/connected/publicate/:userName", mainController.displayPublication);
-router.post("/connected/publicate/:userName", mainController.handlePublication);
+router.get("/connected/publicate/:userName", postController.displayPublication);
+router.post("/connected/publicate/:userName", postController.handlePublication);
 
 // *404
 router.use(error404.display404);

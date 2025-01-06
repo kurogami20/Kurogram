@@ -1,5 +1,8 @@
 
     <footer></footer>
 </body>
-<script src="../../js/index.js"></script>
+<% if (locals.connected||locals.info) { %>
+ <script src="../../js/index.js"></script>
+<% } else { %><% } %>
+
 </html>

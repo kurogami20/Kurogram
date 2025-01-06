@@ -119,7 +119,7 @@ em {
 }
 .post_user > .user_link {
   display: flex;
-  width: min-content;
+  width: fit-content;
   gap: 1rem;
 
   align-items: center;
@@ -145,6 +145,8 @@ em {
 }
 .post_img_img {
   width: 100%;
+
+  object-fit: cover;
 }
 .post_interaction {
   display: flex;
