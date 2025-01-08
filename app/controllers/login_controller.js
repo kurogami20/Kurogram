@@ -2,6 +2,10 @@ import postInfo from "../../data/posts.json" with { type: "json" };
 import userInfo from "../../data/user_info.json" with { type: "json" };
 import userInfoConnected from "../../data/user_info.json" with { type: "json" };
 import fs from "node:fs"
+import user_info from "../../data/connect.js"
+import allPost from "../../data/connect.js";
+
+
 
 const controllerLogList = {
 
@@ -13,70 +17,58 @@ const controllerLogList = {
   },
 
 // *vérifivation des information du formulaire de login
-  checkLogin(req,res,next){
+   checkLogin(req,res,next){
     
-    function log (){
+   async function log (){
+    // *on récupère les donnée de user
       const info = req.body;
+
+      // *On vérifie les donnée par rapport a la db
+      const namePass = await user_info.query(`select name from all_user_info where name='${info.name}' and password='${info.password}' `)
+     
+   
+      try{
+        // *si username a une valeur on connecte l'user
+     const userNameDb = namePass.rows[0].name
+res.redirect(`/connected/${userNameDb}`)
+   }catch(error){
+
+    // *message d'erreur
+     if (info.name===''||info.password===''||info===""){
       
-
-      // *on vérifie si l'utilisateur a bien rempli tous les champs
-
-    if (info.name===''||info.password===''||info===""){
      res.render("login",{
       userInfo,
-      errorLog:"Veuillez bien renseigner tous les champs."
-      
+      errorLog:"Veuillez bien renseigner tous les champs." 
     })
-  return}
-
-  // *on vérifie si l'utilisateur a bien remplis les bonnes informations
-
-    else if(userInfoConnected.find((user)=> user.name!==info.name&&user.password===info.password || user.name===info.name&& user.password!==info.password)){
+     
+   }else {
       res.render("login",{
       userInfo,
-      errorLog:"Mot de passe ou nom d'utilisateur incorrect "
+      errorLog:"Mot de passe et/ou nom d'utilisateur incorrect "
     })
    return}
-
-   // *on envoie l'utilisateur sur la page d'accueil si toutes les informations sont justes
-
-    else if(userInfoConnected.find((user)=> user.name.includes(info.name) && user.password.includes(info.password))){
-        const user = userInfoConnected.find((user)=> user.name===info.name || user.password===info.password);
-
-// console.log(userInfoTemp)
-    // res.render("index_connected",{
-    //  postInfo,
-    //  info,
-    //  userPhoto : user.photo
-    // })
-    // res.redirect("/connected")
-     
-   res.redirect(`/connected/${user.name}`)}
-
-  //* si aucune des situations ci-dessus ne fonctionnent on renvoit ce message 
-
-    else {
-         res.render("login",{
-      userInfo,
-      errorLog:"Compte inexistant "
-    })
-   return}}
+  
+  }
+    
+}
     log()
     
   },
 
   // *page d'accueil quand l'utilisateur est connecté
-displayHomeConnected(req,res){
+async displayHomeConnected(req,res){
 const userName = req.params.userName
-const info = userInfo.find((user)=>user.name===userName)
-console.log(info)
+
+const info = await user_info.query(`select * from "all_user_info" where "name"='${userName}';`)
+const infoPost = await allPost.query('select * from "post_info";');
+
 console.log(userName)
 
   res.render("index_connected",{
-    postInfo,
+    postInfo:infoPost.rows,
     connected:"link",
     userName:userName,
-    info
+    info:info.rows[0]
   })
 },
 // *page du compte de l'utilisateur

@@ -1,6 +1,6 @@
 import userInfo from "../../data/user_info.json" with { type: "json" };
 import fs from "node:fs"
-
+import user_info from "../../data/connect.js"
 
 const controllersPostList = {
 
