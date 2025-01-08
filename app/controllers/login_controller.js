@@ -4,7 +4,7 @@ import userInfoConnected from "../../data/user_info.json" with { type: "json" };
 import fs from "node:fs"
 import user_info from "../../data/connect.js"
 import allPost from "../../data/connect.js";
-
+import account_info from "../../data/connect.js"
 
 
 const controllerLogList = {
@@ -72,12 +72,13 @@ console.log(userName)
   })
 },
 // *page du compte de l'utilisateur
-  displayAccount(req,res){
+ async displayAccount(req,res){
    const accountName= req.params.accountName
-   const user = userInfo.find(user=>user.name===accountName)
-   console.log(user)
+
+const user = await account_info.query(`select * from user_account_info where "user_name"='${accountName}'`)   
+console.log(user.rows)
 res.render("account",{
-     user,
+     user:user.rows[0],
     inAccount:"no photo",
      
     })
@@ -89,7 +90,7 @@ displayCreateAccount(req,res){
   )
 },
 // *vérifivation des information du formulaire de création de compte
-displayCreateAccountverify(req,res){
+async displayCreateAccountverify(req,res){
 const info = req.body
     console.log(info)
     if (info.name===''||info.password===''){
@@ -104,34 +105,15 @@ const info = req.body
     else{
 
 // * on récupère les donnée fournie dans un objet
-const newUser = 
+user_info.query(`INSERT INTO "all_user_info" ("name","password","photo") VALUES
+  ('${info.name}','${info.password}','${info.photo}');
+  `)
 
-  {
-    "name": info.name,
-    "password":info.password,
-    "photo": info.photo,
-    "publication": 0,
-    "followers": 0,
-    "followings": 0
-  }
-// *on récupère le chemin vers le fichier des données utilisateurs
-const filePath ="/var/www/html/sigurd/Kurogram/data/user_info.json"
+  const idUser = await user_info.query(`select id from all_user_info where name='${info.name}'`)
 
-// *on récupère le fichier de donné es
-const userData =fs.readFileSync(filePath)
-// **on transforme le fichier de donées en tableau
-const  userData2 = JSON.parse(userData)
-// *on ajoute les données du nouvel utilisateur (au début)
-userData2.unshift(newUser)
-// *on transforme le tableau en JSON string
-const newUserJsonData = JSON.stringify(userData2, null, 2)
-// *on ajoute JSON string dans le fichier de donnée utilisateur
-try {
-  fs.writeFileSync(filePath, newUserJsonData);
-  console.log('JSON data saved to file successfully.');
-} catch (error) {
-  console.error('Error writing JSON data to file:', error);
-}
+  account_info.query(`INSERT INTO "user_account_info" ("id_user","user_name","user_posts_number","user_followers","user_followings", "user_photo") VALUES
+  ('${idUser.rows[0].id}','${info.name}',0,0,0,'${info.photo}');
+  `)
 
 res.redirect("/login")
     }

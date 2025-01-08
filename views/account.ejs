@@ -5,25 +5,25 @@
       <header class="account_header">
         <div class="id_container">
           <% if (user.photo!=="") { %>
-          <img class="user_pfp" src="<%= user.photo %>" alt="" />
+          <img class="user_pfp" src="<%= user.user_photo %>" alt="" />
           <% } else {%>
           <div class="user">
             <div class="circle_user"><i class="fa-solid fa-user"></i></div>
           </div>
           <% } %>
-          <h2 class="user_name"><%=user.name%></h2>
+          <h2 class="user_name"><%=user.user_name%></h2>
         </div>
         <ul class="user_info">
           <li class="user_info_item user_info_publi">
-            <p class="info_publi_numbers"><%= user.publication %></p>
+            <p class="info_publi_numbers"><%= user.user_posts_number %></p>
             Publications
           </li>
           <li class="user_info_item user_info_follower">
-            <p class="info_publi_numbers"><%= user.followers %></p>
+            <p class="info_publi_numbers"><%= user.user_followers %></p>
             Followers
           </li>
           <li class="user_info_item user_info_following">
-            <p class="info_publi_numbers"><%= user.followings %></p>
+            <p class="info_publi_numbers"><%= user.user_followings %></p>
             Followings
           </li>
         </ul>
