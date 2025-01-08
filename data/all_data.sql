@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS "user_account_info"(
 "id_user" INT REFERENCES "all_user_info"("id"),
 "user_name" VARCHAR(20),
 "user_photo" VARCHAR(200) ,
-"user_posts_number" INT,
-"user_followers" INT,
-"user_followings" INT 
+"user_posts_number" INT NULL,
+"user_followers" INT  NULL,
+"user_followings" INT NULL
 ); 
 INSERT INTO "user_account_info" ("id_user","user_name","user_posts_number","user_followers","user_followings", "user_photo") VALUES
 (1,'kurogami_20', 10, 100, 259,  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLe6lkGg9A6mLuugm_LOa6JuwFmYY3PLpI5A&s'),
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS "post_info"(
 "user_name" VARCHAR(20) ,
 "user_photo" VARCHAR(200),
 "user_post"  VARCHAR(200) NOT NULL,
-"post_description"  VARCHAR(200)
+"post_description"  VARCHAR(200) NULL
 );
 INSERT INTO "post_info" ("id_user","user_name", "user_photo", "user_post", "post_description") VALUES
 (1,'kurogami_20', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLe6lkGg9A6mLuugm_LOa6JuwFmYY3PLpI5A&s', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLe6lkGg9A6mLuugm_LOa6JuwFmYY3PLpI5A&s', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
