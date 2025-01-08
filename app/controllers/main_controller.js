@@ -1,16 +1,14 @@
-import postInfo from "../../data/posts.json" with { type: "json" };
-
+import allPost from "../../data/connect.js";
 
 const controllersList = {
   // *affichage de la page d'accueil
-  displayHome(req, res) {
-    res.render("index",{
-      postInfo
+  async displayHome(req, res) {
+    const infoPost = await allPost.query('select * from "post_info";');
+
+    res.render("index", {
+      postInfo: infoPost.rows,
     });
-
   },
-
-
 };
 
 export default controllersList;

@@ -1,5 +1,21 @@
 [
   {
+    "name": "michelle",
+    "password": "mich",
+    "photo": "https://platform.polygon.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25479118/eldenring_guide_maliketh_header.jpg?quality=90&strip=all&crop=7.8125,0,84.375,100",
+    "publication": 0,
+    "followers": 0,
+    "followings": 0
+  },
+  {
+    "name": "alex",
+    "password": "dumas",
+    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLe6lkGg9A6mLuugm_LOa6JuwFmYY3PLpI5A&s",
+    "publication": 0,
+    "followers": 0,
+    "followings": 0
+  },
+  {
     "name": "kurogami",
     "password": "kuro",
     "photo": "https://www.ecranlarge.com/content/uploads/2022/05/elden-ring-photo-1431540.jpg",

@@ -13,15 +13,17 @@ displayPublication(req,res){
     info
   })
 },
+
+
 handlePublication(req,res){
   const userName= req.params.userName
   const info = userInfo.find((user)=>user.name===userName)
 const publiPhoto = req.body
 
 if (publiPhoto.post!== ""){
-const number = userInfo.find((user)=>user.name===userName)
+info.publication=+1
 
-number.publication++
+
 // *On récupère les donnée du nouveau post
 const newpost ={
 "user_photo":info.photo,
@@ -48,13 +50,7 @@ try {
   console.error('Error writing JSON data to file:', error);
 }
 
-
-
-
-
-
-
-
+console.log(info.publication)
 res.redirect(`/connected/${info.name}`)  
 }
   else{
