@@ -2,6 +2,7 @@ import express from "express";
 import mainController from "./controllers/main_controller.js";
 import loginController from "./controllers/login_controller.js";
 import postController from "./controllers/post_controller.js";
+import otherAccountController from "./controllers/otherAccount_controller.js";
 import error404 from "./middleware/404.js";
 
 const router = express.Router();
@@ -27,6 +28,11 @@ router.post(
 router.get("/connected/publicate/:userName", postController.displayPublication);
 router.post("/connected/publicate/:userName", postController.handlePublication);
 
+// *voir d'autres comptes
+router.get(
+  "/check/:user/:user_check",
+  otherAccountController.displayChackedAccount
+);
 // *404
 router.use(error404.display404);
 export default router;

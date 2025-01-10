@@ -1,14 +1,11 @@
-import allPost from "../../data/connect.js";
+import data from "../models/data_mapper.js";
 
 const controllersList = {
   // *affichage de la page d'accueil
   async displayHome(req, res) {
-    const infoPost = await allPost.query(
-      'SELECT * FROM "post_info" ORDER BY id DESC;'
-    );
-
+    const postInfo = await data.infoPost();
     res.render("index", {
-      postInfo: infoPost.rows,
+      postInfo,
     });
   },
 };

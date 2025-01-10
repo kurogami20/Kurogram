@@ -2,9 +2,9 @@
 <main>
   <div class="contain">
     <% postInfo.forEach(post => { %>
-    <article class="post">
+    <article class="post" id="<%= post.id %>">
       <div class="post_user">
-        <a class="user_link" href="#">
+        <a class="user_link" href="/check/user/<%=post.user_name%>">
           <% if (post.user_photo!=="") { %>
           <img src="<%= post.user_photo %>" alt="" class="post_user_img" />
           <% } else{%>
@@ -32,10 +32,12 @@
             <i class="fa-regular fa-bookmark"></i>
           </li>
         </ul>
-        <p class="post_interaction_like_number"></p>
+        <p class="post_interaction_like_number">
+          <strong><%=post.likes %></strong> likes
+        </p>
       </div>
       <div class="post_description">
-        <p class="post_description_text"><%= post.user_description %></p>
+        <p class="post_description_text"><%= post.post_description %></p>
       </div>
       <div class="post_comment_add">
         <a href="" class="post_comment_add--add"></a>

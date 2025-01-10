@@ -4,9 +4,9 @@ const post = document.querySelectorAll(".post");
 
 const interactionSelector = post.forEach((post) => {
   // *gestion du nb de like
-  let likes = Math.round(Math.random() * 100000);
-  const likeNumbers = post.querySelector(".post_interaction_like_number");
-  likeNumbers.textContent = `${likes} likes`;
+  // let likes = Math.round(Math.random() * 100000);
+  // const likeNumbers = post.querySelector(".post_interaction_like_number");
+  // likeNumbers.textContent = `${likes} likes`;
 
   // *param de l'event
 
@@ -23,7 +23,7 @@ const interactionSelector = post.forEach((post) => {
   function clickedLike(event) {
     if (userLike % 2 === 0) {
       userLike += 1;
-      likes += 1;
+      // likes += 1;
       like.classList.remove("fa-regular");
       like.classList.add("fa-solid");
       like.style.color = "#ad0000";
@@ -31,7 +31,7 @@ const interactionSelector = post.forEach((post) => {
       console.log("click");
       like.style.cursor = "pointer";
     } else {
-      likes -= 1;
+      // likes -= 1;
       userLike -= 1;
       like.classList.add("fa-regular");
       like.classList.remove("fa-solid");
