@@ -62,11 +62,13 @@ const controllerLogList = {
     const accountName = req.params.accountName;
 
     const user = await data.userAccount(accountName);
-
-    res.render("account", {
+    const photo = await data.accountPhoto(accountName);
+    console.log(photo);
+    res.render("connected/account", {
       who: accountName,
       user,
       inAccount: "no photo",
+      photo,
     });
   },
   // *page de création de compte

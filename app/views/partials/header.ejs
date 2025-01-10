@@ -135,8 +135,7 @@
           <a class="menu_link" href="/connected/<%= user.user_name %>"
             ><i class="fa-solid fa-house"></i
           ></a>
-          <% } else if (locals.who && locals.user && who!==user.user_name &&
-          who!== "user"){ %>
+          <% } else if (locals.who && locals.user && who!==user.user_name ){ %>
           <a class="menu_link" href="/connected/<%= who %>"
             ><i class="fa-solid fa-house"></i
           ></a>

@@ -56,6 +56,14 @@ const dataMapper = {
     );
     return account;
   },
+  // dans la page account pour trouver tous les posts de l'user
+  async accountPhoto(name) {
+    const photoList = await data.query(
+      "select user_post from post_info where user_name=$1 order by user_post;",
+      [name]
+    );
+    return photoList.rows;
+  },
   // *post related
   async likesPost(idPost) {
     const likes = await data.query("SELECT likes FROM post_info WHERE id=$1;", [

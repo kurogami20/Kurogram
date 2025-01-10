@@ -6,11 +6,13 @@ const account = {
 
     const user = await data.userAccount(info.user_check);
     const checkingAccount = await data.userAccount(info.user);
+    const photo = await data.accountPhoto(info.user_check);
     console.log(info);
     res.render("check_account", {
       user,
       who: info.user,
       checkingAccount,
+      photo,
     });
   },
 };

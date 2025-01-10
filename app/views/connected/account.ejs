@@ -1,4 +1,4 @@
-<%- include('./partials/header') %>
+<%- include('../partials/header') %>
 <main>
   <div class="contain">
     <article class="account_inteface">
@@ -39,6 +39,15 @@
       </div>
       <div class="user_publi"></div>
     </article>
+    <ul class="photo_container">
+      <% photo.forEach(post => { %>
+      <li class="photo_item">
+        <a class="photo_link" href="<%= post.user_post %>"
+          ><img class="photo_post" src="<%= post.user_post %>" alt=""
+        /></a>
+      </li>
+      <% }) %>
+    </ul>
   </div>
 </main>
-<%- include('./partials/footer') %>
+<%- include('../partials/footer') %>

@@ -52,3 +52,25 @@
 }
 .user_publi {
 }
+.photo_container {
+  list-style: none;
+  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0;
+}
+.photo_item {
+  height: 23rem;
+  width: 18rem;
+}
+.photo_link {
+}
+.photo_post {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+.photo_post:hover {
+  transform: scale(1.1);
+}
