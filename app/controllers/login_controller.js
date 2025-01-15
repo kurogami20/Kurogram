@@ -20,7 +20,10 @@ const controllerLogList = {
       try {
         // *si username a une valeur on connecte l'user
         const userNameDb = namePass.rows[0].name;
-        res.redirect(`/connected/${userNameDb}`);
+        req.session.username = [];
+        req.session.username.push(userNameDb);
+
+        res.redirect(`/connected/${req.session.username[0]}`);
       } catch (error) {
         // *message d'erreur
         if (info.name === "" || info.password === "" || info === "") {
@@ -42,13 +45,11 @@ const controllerLogList = {
 
   // *page d'accueil quand l'utilisateur est connecté
   async displayHomeConnected(req, res) {
-    const userName = req.params.userName;
+    const userName = req.session.username[0];
 
     const info = await data.userConnected(userName);
 
     const infoPost = await data.infoPost();
-
-    console.log(userName);
 
     res.render("connected/index_connected", {
       postInfo: infoPost,
@@ -59,11 +60,11 @@ const controllerLogList = {
   },
   // *page du compte de l'utilisateur
   async displayAccount(req, res) {
-    const accountName = req.params.accountName;
+    const accountName = req.session.username;
 
-    const user = await data.userAccount(accountName);
-    const photo = await data.accountPhoto(accountName);
-    console.log(photo);
+    const user = await data.userAccount(accountName[0]);
+    const photo = await data.accountPhoto(accountName[0]);
+
     res.render("connected/account", {
       who: accountName,
       user,
@@ -71,6 +72,7 @@ const controllerLogList = {
       photo,
     });
   },
+
   // *page de création de compte
   displayCreateAccount(req, res) {
     res.render("create_account", { create: "css" });
@@ -90,13 +92,18 @@ const controllerLogList = {
       // *ajout des donnée dans la table all_user
       data.userInfo(info.name, info.password, info.photo);
 
-      const idUser = await user_info.query(
-        `select id from all_user_info where name='${info.name}'`
-      );
-      data.accountInfo(idUser.rows[0].id, info.name, info.photo);
+      // const idUser = await user_info.query(
+      //   `select id from all_user_info where name='${info.name}'`
+      // );
+      // data.accountInfo(idUser.rows[0].id);
 
       res.redirect("/login");
     }
+  },
+
+  logout(req, res) {
+    req.session.username = [];
+    res.redirect("/");
   },
 };
 

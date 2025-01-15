@@ -4,8 +4,12 @@ import loginController from "./controllers/login_controller.js";
 import postController from "./controllers/post_controller.js";
 import otherAccountController from "./controllers/otherAccount_controller.js";
 import error404 from "./middleware/404.js";
+import loginUser from "./middleware/login_user.js";
 
 const router = express.Router();
+
+router.use(loginUser);
+
 // *accueil
 router.get("/", mainController.displayHome);
 
@@ -33,6 +37,8 @@ router.get(
   "/check/:user/:user_check",
   otherAccountController.displayChackedAccount
 );
+
+router.get("/log_out", loginController.logout);
 // *404
 router.use(error404.display404);
 export default router;

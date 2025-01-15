@@ -18,12 +18,4 @@ client.connect((error) => {
   }
 });
 
-// async function test() {
-//   const test = await client.query('select "name" from "all_user_info";');
-//   return test.rows;
-// }
-// console.log(test());
-// const result = await client.query('select "name" from "all_user_info";');
-
-// console.log(result.rows);
 export default client;

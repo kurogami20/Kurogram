@@ -4,7 +4,11 @@ const dataMapper = {
   // * index related
   async infoPost() {
     const dataPost = await data.query(
-      'SELECT * FROM "post_info" ORDER BY id DESC;'
+      ` select p.*, a.name, a.photo
+        from all_user_info a 
+        join post_info p on a.id  = p.id_user 
+        order by p.id desc;
+      ;`
     );
     return dataPost.rows;
   },
@@ -31,7 +35,10 @@ const dataMapper = {
   // pour la page compte de user connecté
   async userAccount(userName) {
     const check = await data.query(
-      `select * from "user_account_info" where "user_name"=$1;`,
+      `select u.*, a.name, a.photo
+      from all_user_info a
+      join user_account_info u on a.id  = u.id_user 
+       where "name"=$1;`,
       [userName]
     );
     return check.rows[0];
@@ -47,19 +54,23 @@ const dataMapper = {
     return user;
   },
   // dans user_account
-  async accountInfo(id, name, photo) {
+  async accountInfo(id) {
     const account = await data.query(
-      `INSERT INTO "user_account_info" ("id_user","user_name","user_posts_number","user_followers","user_followings", "user_photo") VALUES
-  ($1,$2,0,0,0,$3);
+      `INSERT INTO "user_account_info" ("id_user","user_posts_number","user_followers","user_followings") VALUES
+  ($1,0,0,0);
   `,
-      [id, name, photo]
+      [id]
     );
     return account;
   },
   // dans la page account pour trouver tous les posts de l'user
   async accountPhoto(name) {
     const photoList = await data.query(
-      "select user_post from post_info where user_name=$1 order by user_post;",
+      `select p.user_post, a.name
+      from all_user_info a
+      join post_info p on a.id  = p.id_user 
+      where a.name=$1 
+      order by p.id desc;`,
       [name]
     );
     return photoList.rows;
@@ -69,6 +80,26 @@ const dataMapper = {
     const likes = await data.query("SELECT likes FROM post_info WHERE id=$1;", [
       idPost,
     ]);
+    return likes[0].likes;
+  },
+
+  // * post related
+
+  async updateNb(userName) {
+    const postNb = data.query(
+      `update user_account_info set user_posts_number = user_posts_number + 1  where id_user = $1;`,
+      [userName]
+    );
+    return postNb;
+  },
+  async newPost(id, photoInfo) {
+    const post = data.query(
+      `
+  INSERT INTO "post_info" ("id_user", "user_post", "post_description", "likes") VALUES
+  ($1,$2,$3,0);
+  `,
+      [id, photoInfo.post, photoInfo.description]
+    );
   },
 };
 

@@ -4,13 +4,13 @@
     <% postInfo.forEach(post => { %>
     <article class="post" id="<%= post.id %>">
       <div class="post_user">
-        <a class="user_link" href="/check/user/<%=post.user_name%>">
-          <% if (post.user_photo!=="") { %>
-          <img src="<%= post.user_photo %>" alt="" class="post_user_img" />
+        <a class="user_link" href="/check/user/<%=post.name%>">
+          <% if (post.photo!=="") { %>
+          <img src="<%= post.photo %>" alt="" class="post_user_img" />
           <% } else{%>
           <div class="circle_user"><i class="fa-solid fa-user"></i></div>
           <% } %>
-          <em class="post_user_name"><%= post.user_name %></em>
+          <em class="post_user_name"><%= post.name %></em>
         </a>
       </div>
       <div class="post_img">
@@ -33,7 +33,7 @@
           </li>
         </ul>
         <p class="post_interaction_like_number">
-          <strong><%=post.likes %></strong> likes
+          <strong><%=post.likes%></strong> likes
         </p>
       </div>
       <div class="post_description">

@@ -55,7 +55,7 @@
       </div>
       <% } else if (locals.inAccount) { %>
       <div class="user">
-        <a href="/">
+        <a href="/log_out">
           <span>
             <i class="fa-solid fa-right-from-bracket"></i>
           </span>
@@ -77,7 +77,7 @@
             background-color: black;
           "
         >
-          <% if (checkingAccount.user_photo!=="") { %>
+          <% if (checkingAccount.photo!=="") { %>
           <img
             style="
               border-radius: 50%;
@@ -85,7 +85,7 @@
               width: 100%;
               height: 100%;
             "
-            src="<%=checkingAccount.user_photo%>"
+            src="<%=checkingAccount.photo%>"
             alt=""
           />
           <% } else { %>
@@ -95,10 +95,8 @@
           </div>
           <%}%>
         </div>
-        <a href="/login/account/<%= checkingAccount.user_name %>"
-          ><strong class="user_connect"
-            ><%= checkingAccount.user_name %></strong
-          ></a
+        <a href="/login/account/<%= checkingAccount.name %>"
+          ><strong class="user_connect"><%= checkingAccount.name %></strong></a
         >
       </div>
       <% }else { %>
@@ -131,11 +129,11 @@
             ><i class="fa-solid fa-house"></i
           ></a>
           <% } else if (locals.who && locals.user && who!=='user'&& who===
-          user.user_name){ %>
-          <a class="menu_link" href="/connected/<%= user.user_name %>"
+          user.name){ %>
+          <a class="menu_link" href="/connected/<%= user.name %>"
             ><i class="fa-solid fa-house"></i
           ></a>
-          <% } else if (locals.who && locals.user && who!==user.user_name ){ %>
+          <% } else if (locals.who && locals.user && who!==user.name ){ %>
           <a class="menu_link" href="/connected/<%= who %>"
             ><i class="fa-solid fa-house"></i
           ></a>
@@ -170,20 +168,18 @@
           ></a>
         </li>
         <% } else if (locals.who && locals.user && who!=='user'&& who===
-        user.user_name ){%>
+        user.name ){%>
         <li class="menu_item">
-          <a
-            class="menu_link"
-            href="/connected/notification/<%= user.user_name %>"
+          <a class="menu_link" href="/connected/notification/<%= user.name %>"
             ><i class="fa-regular fa-heart"></i
           ></a>
         </li>
         <li class="menu_item">
-          <a class="menu_link" href="/connected/publicate/<%= user.user_name %>"
+          <a class="menu_link" href="/connected/publicate/<%= user.name %>"
             ><i class="fa-solid fa-plus"></i
           ></a>
         </li>
-        <% } else if (locals.who && locals.user && who!== user.user_name&&who!==
+        <% } else if (locals.who && locals.user && who!== user.name&&who!==
         "user"){%>
         <li class="menu_item">
           <a class="menu_link" href="/connected/notification/<%= who %>"
