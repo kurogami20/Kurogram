@@ -5,7 +5,7 @@ import postController from "./controllers/post_controller.js";
 import otherAccountController from "./controllers/otherAccount_controller.js";
 import error404 from "./middleware/404.js";
 import loginUser from "./middleware/login_user.js";
-import search from "./controllers/rech_controller.js";
+import left_menu from "./controllers/left_menu_controller.js";
 
 const router = express.Router();
 
@@ -40,8 +40,12 @@ router.get(
 );
 
 // *reherche d'autre compte
-router.get("/:user/search", search.displaySearch);
+router.get("/:user/search", left_menu.displaySearch);
 
+// * explorer
+router.get("/:user/explore", left_menu.displayExplore);
+
+// *logout
 router.get("/log_out", loginController.logout);
 // *404
 router.use(error404.display404);

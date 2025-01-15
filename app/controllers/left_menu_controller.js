@@ -19,5 +19,13 @@ const search = {
       });
     }
   },
+  async displayExplore(req, res) {
+    const posts = await data.infoPost();
+
+    res.render("explore", {
+      posts,
+      exploreStyle: "css",
+    });
+  },
 };
 export default search;

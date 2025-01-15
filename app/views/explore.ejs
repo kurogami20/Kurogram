@@ -1,0 +1,17 @@
+<%- include('./partials/header') %>
+<main>
+  <div class="contain">
+    <div class="posts_contain">
+      <% posts.forEach(post => { %>
+      <div class="post_image_contain">
+        <img class="image" src="<%= post.user_post %>" alt="" />
+        <div class="likes_section">
+          <i class="fa-solid fa-heart"></i
+          ><span class="likes_number"><%= post.likes %></span>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</main>
+<%- include('./partials/footer') %>

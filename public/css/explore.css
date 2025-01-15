@@ -1,0 +1,34 @@
+.posts_contain {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.post_image_contain {
+  position: relative;
+}
+.post_image_contain {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.post_image_contain:hover {
+  transform: scale(1.1);
+  .likes_section {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+    align-items: center;
+  }
+}
+
+.likes_section {
+  position: absolute;
+  top: 45%;
+  left: 30%;
+  display: none;
+  transition: transform 0.3s ease;
+  font-size: 2rem;
+}
+.likes_number {
+  color: white;
+}

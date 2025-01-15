@@ -1,8 +1,14 @@
-import search from "../controllers/rech_controller.js";
+import search from "../controllers/left_menu_controller.js";
 import data from "../models/connect.js";
 
 const dataMapper = {
   // * index related
+
+  async allPost() {
+    const posts = await data.query("select * from post_info");
+    return posts.rows;
+  },
+
   async infoPost() {
     const dataPost = await data.query(
       ` select p.*, a.name, a.photo

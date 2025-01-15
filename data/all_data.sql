@@ -75,7 +75,7 @@ SELECT
     END
   ),
   'pass_' || i,
-  'https://picsum.photos/id/' || (FLOOR(RANDOM() * 1000))::TEXT || '/500/500'
+  'https://i.pravatar.cc' || (FLOOR(RANDOM() * 1000))::TEXT || '/500'
 FROM generate_series(5, 500) i;
 
 -- Insert corresponding account info
@@ -86,7 +86,7 @@ SELECT
   floor(random() * 1000)::int,  -- Random followers between 0-999
   floor(random() * 1000)::int   -- Random followings between 0-999
 FROM "all_user_info"
-WHERE id > 4;  -- Skip the first 4 existing records
+WHERE id > 500;  -- Skip the first 4 existing records
 
 -- Insert corresponding posts
 INSERT INTO "post_info" ("id_user", "user_post", "post_description", "likes")
@@ -102,5 +102,5 @@ SELECT
   END,
   FLOOR(RANDOM() * 1000 + 1)::INT
 FROM "all_user_info" au
-WHERE au.id > 4;
+WHERE au.id > 500;
 
