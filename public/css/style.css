@@ -1,5 +1,6 @@
 * {
   font-family: sans-serif;
+  color: rgb(204, 204, 204);
 }
 html {
   background-color: rgb(36, 36, 36);
@@ -18,12 +19,18 @@ body {
 
   border-bottom: solid 0.5px #3d3d3d;
 }
-
+.fa-solid {
+  color: white;
+}
 h1 {
   color: white;
   font-size: 3.5rem;
   text-transform: uppercase;
   text-align: center;
+}
+h2,
+p {
+  color: rgb(204, 204, 204);
 }
 .user {
   display: flex;

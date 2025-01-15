@@ -1,0 +1,89 @@
+.form {
+  width: 100%;
+}
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 5rem;
+  border: none;
+}
+.label {
+  width: 100%;
+  text-align: center;
+  font-weight: 900;
+}
+.search {
+  width: 100%;
+  margin: 0.5rem;
+  background-color: transparent;
+  border: solid 1px rgb(204, 204, 204);
+  border-radius: 15px;
+  padding: 0.3rem 1rem;
+}
+.button_contain {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.button {
+  background-color: transparent;
+  border: solid 1px rgb(204, 204, 204);
+  cursor: pointer;
+  padding: 0.3rem 1rem;
+  border-radius: 15px;
+}
+.button:hover {
+  background-color: rgb(204, 204, 204);
+  color: #242424;
+}
+.button_s {
+}
+.button_r {
+}
+
+.user_searched_container {
+  width: 90%;
+}
+.user_contained {
+  width: 100%;
+  border-bottom: solid 1px rgb(204, 204, 204);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 2rem;
+  gap: 5rem;
+}
+.searched_user_img {
+  width: 7rem;
+  height: 7rem;
+  border: solid 2px rgb(204, 204, 204);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.searched_circle_user {
+  border: solid 2px white;
+  border-radius: 50%;
+  width: 7rem;
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+.fa-user {
+  color: white;
+}
+
+.user_name_link {
+  text-decoration: none;
+}
+.user_name_link :hover {
+  text-decoration: underline;
+}
+.user_name {
+  font-size: 1.5rem;
+}

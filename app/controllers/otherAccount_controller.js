@@ -27,10 +27,3 @@ const account = {
   },
 };
 export default account;
-`
-  select client.email
-  from client 
-  join order on(order.client=client.id)
-  where order.total = max(order.total)
-
-`;

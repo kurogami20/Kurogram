@@ -1,3 +1,4 @@
+import search from "../controllers/rech_controller.js";
 import data from "../models/connect.js";
 
 const dataMapper = {
@@ -100,6 +101,17 @@ const dataMapper = {
   `,
       [id, photoInfo.post, photoInfo.description]
     );
+  },
+
+  async searchUser(name) {
+    const users = await data.query(
+      `select * from all_user_info
+      where name LIKE $1
+      order by name;
+    `,
+      [name]
+    );
+    return users.rows;
   },
 };
 

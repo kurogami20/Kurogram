@@ -1,0 +1,68 @@
+<%- include('./partials/header') %>
+<main>
+  <div class="contain">
+    <h2>Découvrez des comptes</h2>
+    <form class="form" action="" method="get">
+      <fieldset class="fieldset">
+        <label class="label" for="">
+          Recherche
+          <input class="search" type="search" name="search" id="search" />
+        </label>
+        <div class="button_contain">
+          <button class="button button_s" type="submit">Go</button>
+          <button class="button button_r" type="reset">Effacer</button>
+        </div>
+      </fieldset>
+    </form>
+    <% if (searchResult!=="none") { %>
+    <div class="user_searched_container">
+        <% searchResult.forEach(userSerarched => { %>
+        <div class="user_contained">
+          <div>
+           
+            <% if (currentUser===[]) { %>
+              <% if (userSerarched.photo!=="") { %>
+               <a href="/check/<%= currentUser %>/<%= userSerarched.name %>"></a>
+              <img
+               class="searched_user_img"
+                src="<%= userSerarched.photo %>"
+                alt=""
+            />
+              <% } else {%>
+                <div class="circle_user"><i class="fa-solid fa-user"></i></div>
+            <% } %>
+          </a>
+            <% } else {%>
+             <% if (userSerarched.photo!=="") { %>
+               <a href="/check/guest/<%= userSerarched.name %>"></a>
+              <img
+               class="searched_user_img"
+                src="<%= userSerarched.photo %>"
+                alt=""
+            />
+              <% } else {%>
+                <div class="searched_circle_user"><i class="fa-solid fa-user"></i></div>
+            <% } %>
+          </a>
+            <% } %>
+          
+        </div>
+          <div>
+            <% if (currentUser===[]) { %>
+            <a class="user_name_link" href="/check/<%= currentUser %>/<%= userSerarched.name %>"
+              ><div class="user_name"><%= userSerarched.name %></div></a
+            >
+            <% } else {%>
+            <a class="user_name_link" href="/check/guest/<%= userSerarched.name %>"
+              ><div class="user_name"><%= userSerarched.name %></div></a
+            >
+            <% } %>
+            </div></div>
+       
+        <% }) %>
+      </tbody>
+    </table>
+    <% } %>
+  </div>
+</main>
+<%- include('./partials/footer') %>

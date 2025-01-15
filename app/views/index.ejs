@@ -4,7 +4,7 @@
     <% postInfo.forEach(post => { %>
     <article class="post" id="<%= post.id %>">
       <div class="post_user">
-        <a class="user_link" href="/check/user/<%=post.name%>">
+        <a class="user_link" href="/check/guest/<%=post.name%>">
           <% if (post.photo!=="") { %>
           <img src="<%= post.photo %>" alt="" class="post_user_img" />
           <% } else{%>
