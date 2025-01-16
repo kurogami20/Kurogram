@@ -90,6 +90,13 @@ const dataMapper = {
     return likes[0].likes;
   },
 
+  async updateLikes(idPost) {
+    const likesNb = data.query(
+      `update post_info set likes = likes + 1  where id = $1;`,
+      [idPost]
+    );
+    return postNb;
+  },
   // * post related
 
   async updateNb(userName) {

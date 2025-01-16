@@ -6,6 +6,10 @@ html {
   background-color: rgb(36, 36, 36);
   height: 100vh;
 }
+input,
+button {
+  color: black;
+}
 
 .fa-regular {
   cursor: pointer;
@@ -80,7 +84,41 @@ p {
   color: white;
   font-size: 2rem;
 }
-
+/* *left menu */
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg); /* Une rotation complète */
+  }
+}
+@keyframes mi_rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-75deg); /* Une rotation complète */
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.fa-plus:hover,
+.fa-compass:hover {
+  animation: rotation 1s infinite linear; /* Animation de 2 secondes en boucle */
+}
+.menu_link > .fa-heart,
+.fa-magnifying-glass {
+  transition: transform 0.3s ease-in-out;
+}
+.menu_link > .fa-heart:hover,
+.fa-magnifying-glass:hover {
+  transform: scale(1.15);
+}
+.fa-clapperboard:hover {
+  animation: mi_rotation 0.8s infinite;
+}
 /* *main */
 main {
   margin: 0 10% auto;

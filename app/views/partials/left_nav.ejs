@@ -1,0 +1,60 @@
+<nav class="main_nav">
+  <ul class="menu_list">
+    <% if (locals.userName) { %>
+    <li class="menu_item">
+      <a class="menu_link" href="/connected/<%= userName %>"
+        ><i class="fa-solid fa-house"></i
+      ></a>
+    </li>
+    <li class="menu_item">
+      <a class="menu_link" href="/<%= userName %>/search"
+        ><i class="fa-solid fa-magnifying-glass"></i
+      ></a>
+    </li>
+    <li class="menu_item">
+      <a class="menu_link" href="/<%= userName %>/explore"
+        ><i class="fa-regular fa-compass"></i
+      ></a>
+    </li>
+    <li class="menu_item">
+      <a class="menu_link" href="/<%= userName %>/reels"
+        ><i class="fa-solid fa-clapperboard"></i
+      ></a>
+    </li>
+    <li class="menu_item">
+      <a class="menu_link" href="/<%= userName %>/notification"
+        ><i class="fa-regular fa-heart"></i
+      ></a>
+    </li>
+    <li class="menu_item">
+      <a class="menu_link" href="/<%= userName %>/publicate"
+        ><i class="fa-solid fa-plus"></i
+      ></a>
+    </li>
+    <% } %>
+    <li class="menu_item">
+      <a class="menu_link" href="/"><i class="fa-solid fa-house"></i></a>
+    </li>
+    <li class="menu_item">
+      <a class="menu_link" href="/guest/search"
+        ><i class="fa-solid fa-magnifying-glass"></i
+      ></a>
+    </li>
+    <li class="menu_item">
+      <a class="menu_link" href="/guest/explore"
+        ><i class="fa-regular fa-compass"></i
+      ></a>
+    </li>
+    <li class="menu_item">
+      <a class="menu_link" href="/guest/reels"
+        ><i class="fa-solid fa-clapperboard"></i
+      ></a>
+    </li>
+    <li class="menu_item">
+      <a class="menu_link" href="/login"><i class="fa-regular fa-heart"></i></a>
+    </li>
+    <li class="menu_item">
+      <a class="menu_link" href="/login"><i class="fa-solid fa-plus"></i></a>
+    </li>
+  </ul>
+</nav>

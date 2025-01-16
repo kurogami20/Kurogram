@@ -19,6 +19,10 @@ router.get("/login", loginController.displaylogin);
 router.post("/login", loginController.checkLogin);
 
 router.get("/connected/:userName", loginController.displayHomeConnected);
+router.get(
+  "/connected/:userName/liked/post/:idPost",
+  postController.handleLikes
+);
 // *compte
 router.get("/login/account/:accountName", loginController.displayAccount);
 

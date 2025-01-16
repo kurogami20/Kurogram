@@ -54,7 +54,7 @@ const controllerLogList = {
     res.render("connected/index_connected", {
       postInfo: infoPost,
       connected: "link",
-      userName: userName,
+      userName,
       info,
     });
   },
@@ -66,7 +66,6 @@ const controllerLogList = {
     const photo = await data.accountPhoto(accountName[0]);
 
     res.render("connected/account", {
-      who: accountName,
       user,
       inAccount: "no photo",
       photo,
@@ -91,11 +90,6 @@ const controllerLogList = {
       // * on récupère les donnée fournie dans un objet
       // *ajout des donnée dans la table all_user
       data.userInfo(info.name, info.password, info.photo);
-
-      // const idUser = await user_info.query(
-      //   `select id from all_user_info where name='${info.name}'`
-      // );
-      // data.accountInfo(idUser.rows[0].id);
 
       res.redirect("/login");
     }

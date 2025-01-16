@@ -4,23 +4,34 @@
 }
 
 .post_image_contain {
-  position: relative;
-}
-.post_image_contain {
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
 }
 .post_image_contain:hover {
   transform: scale(1.1);
+
   .likes_section {
     display: flex;
     gap: 1rem;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     align-items: center;
   }
+  .dark {
+    display: block;
+  }
 }
-
+.dark {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: #00000059;
+}
+.image {
+  overflow: hidden;
+}
 .likes_section {
   position: absolute;
   top: 45%;

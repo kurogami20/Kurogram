@@ -35,6 +35,11 @@ const controllersPostList = {
       });
     }
   },
+  async handleLikes(req, res) {
+    idPost = req.params.idPost;
+    await data.updateLikes(idPost);
+    res.redirect("/connected");
+  },
 };
 
 export default controllersPostList;
